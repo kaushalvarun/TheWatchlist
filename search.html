@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search and Results Page</title>
+  <link rel="stylesheet" href="css/styles.css"> 
+  <script src="script.js"></script> 
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+      <ul>
+        <li><a href="index.html">Login</a></li>
+        <li><a href="search.html">Search</a></li>
+        <li><a href="watchlist.html">My Watchlist</a></li>
+      </ul>
+    </nav>
+  <!-- Search bar -->
+<div id="search">
+  <h1>Search for Movies/TV Shows</h1>
+  <div class="form-group">
+    <input type="text" id="searchInput" placeholder="Search by title, actor, director...">
+    <button id="searchButton" onclick="search()">Search</button>
+  </div>
+    <!-- Results -->
+  <h2>Results</h2>
+  <div id="results" class="grid-container"></div>
+</div>
+</body>
+</html>
