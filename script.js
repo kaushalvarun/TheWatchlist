@@ -149,78 +149,127 @@ const mediaData = [
     }
 ];
 
+// Function to apply filters
+function applyFilters() {
+    const selectedGenres = Array.from(document.querySelectorAll(".checkbox-group input[type='checkbox']:checked")).map(checkbox => checkbox.value);
+    const minRating = parseFloat(document.getElementById("ratingFilter").value);
+    const minYear = parseInt(document.getElementById("yearMin").value) || 0; 
+    const maxYear = parseInt(document.getElementById("yearMax").value) || Infinity; 
+    const selectedTypes = Array.from(document.querySelectorAll(".type-filter input[type='checkbox']:checked")).map(checkbox => checkbox.value);
+
+    // Filter the media data based on the selected filters
+    const filteredMedia = mediaData.filter(media => {
+        // genre filter
+        const passGenreFilter = selectedGenres.length === 0 || selectedGenres.some(genre => media.genre.includes(genre));
+
+        // rating filter
+        const passRatingFilter = media.rating >= minRating;
+
+        // year filter
+        const passYearFilter = media.year >= minYear && media.year <= maxYear;
+
+        // type filter
+        const passTypeFilter = selectedTypes.length === 0 || selectedTypes.includes(media.type);
+
+        // Include the media item only if it passes all filters
+        return passGenreFilter && passRatingFilter && passYearFilter && passTypeFilter;
+    });
+
+    // Display filtered results
+    displaySearchResults(filteredMedia);
+}
+
+
+// Function to display search results
+function displaySearchResults(results) {
+    const resultsContainer = document.getElementById("results");
+    resultsContainer.innerHTML = '';
+
+    results.forEach(media => {
+        const resultItem = document.createElement('div');
+        resultItem.classList.add('result-item');
+        resultItem.innerHTML = `
+            <h3>${media.title}</h3>
+            <p>Type: ${media.type}</p>
+            <p>Genre: ${media.genre.join(', ')}</p>
+            <p>Year: ${media.year}</p>
+            <p>Rating: ${media.rating}</p>
+        `;
+        resultsContainer.appendChild(resultItem);
+    });
+}
+
 // Function to display search results
 function search() {
     const searchTerm = document.getElementById("searchInput").value.toLowerCase();
-    const resultsContainer = document.getElementById("results");
-    resultsContainer.innerHTML = ''; 
+    const filteredMedia = mediaData.filter(media => media.title.toLowerCase().includes(searchTerm) || searchTerm === '');
 
-    mediaData.forEach(media => {
-        if (media.title.toLowerCase().includes(searchTerm) || searchTerm === '') {
-            const resultItem = document.createElement('div');
-            resultItem.classList.add('result-item');
-            resultItem.innerHTML = `
-          <h3>${media.title}</h3>
-          <p>Type: ${media.type}</p>
-          <p>Genre: ${media.genre.join(', ')}</p>
-          <p>Year: ${media.year}</p>
-          <p>Rating: ${media.rating}</p>
-        `;
-            resultsContainer.appendChild(resultItem);
-        }
-    });
+    // Apply filters if any
+    applyFilters();
+
+    // Display search results
+    displaySearchResults(filteredMedia);
 }
+
 
 // Display all results initially
 window.onload = function () {
     search();
 }
 
+// Function to update rating value displayed
+function updateRatingValue() {
+    const ratingValue = document.getElementById("ratingFilter").value;
+    const ratingOutput = document.getElementById("ratingOutput");
+    ratingOutput.textContent = ratingValue >= 10 ? '10.0+' : ratingValue + '+';
+}
+
+
 // Watchlist
 
 // Dummy data for watchlist items
 const watchlistData = [
     {
-      title: "Breaking Bad",
-      type: "TV Show",
-      genre: ["Drama", "Crime"],
-      year: 2008,
-      rating: 9.5
+        title: "Breaking Bad",
+        type: "TV Show",
+        genre: ["Drama", "Crime"],
+        year: 2008,
+        rating: 9.5
     },
     {
-      title: "Game of Thrones",
-      type: "TV Show",
-      genre: ["Fantasy", "Drama"],
-      year: 2011,
-      rating: 9.3
+        title: "Game of Thrones",
+        type: "TV Show",
+        genre: ["Fantasy", "Drama"],
+        year: 2011,
+        rating: 9.3
     },
 
-  ];
-  
-  // Function to display watchlist items
-  function displayWatchlist() {
+];
+
+// Function to display watchlist items
+function displayWatchlist() {
     const watchlistContainer = document.getElementById("watchlist");
-    watchlistContainer.innerHTML = ''; 
-  
+    watchlistContainer.innerHTML = '';
+
     watchlistData.forEach(item => {
-      const watchlistItem = document.createElement('div');
-      watchlistItem.classList.add('watchlist-item');
-      watchlistItem.innerHTML = `
+        const watchlistItem = document.createElement('div');
+        watchlistItem.classList.add('watchlist-item');
+        watchlistItem.innerHTML = `
         <h3>${item.title}</h3>
         <p>Type: ${item.type}</p>
         <p>Genre: ${item.genre.join(', ')}</p>
         <p>Year: ${item.year}</p>
         <p>Rating: ${item.rating}</p>
       `;
-      watchlistContainer.appendChild(watchlistItem);
+        watchlistContainer.appendChild(watchlistItem);
     });
-  }
-  
-  // Display watchlist items when page loads
-  window.onload = function() {
+}
+
+// Display watchlist items when page loads
+window.onload = function () {
     displayWatchlist();
-  }
-  
+}
+
 
 // Future functionality
 

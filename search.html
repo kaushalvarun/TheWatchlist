@@ -1,31 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Search and Results Page</title>
-  <link rel="stylesheet" href="css/styles.css"> 
-  <script src="script.js"></script> 
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="script.js"></script>
 </head>
+
 <body>
-    <!-- Navigation Bar -->
-    <nav>
-      <ul>
-        <li><a href="index.html">Login</a></li>
-        <li><a href="search.html">Search</a></li>
-        <li><a href="watchlist.html">My Watchlist</a></li>
-      </ul>
-    </nav>
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Login</a></li>
+      <li><a href="search.html">Search</a></li>
+      <li><a href="watchlist.html">My Watchlist</a></li>
+    </ul>
+  </nav>
   <!-- Search bar -->
-<div id="search">
-  <h1>Search for Movies/TV Shows</h1>
-  <div class="form-group">
-    <input type="text" id="searchInput" placeholder="Search by title, actor, director...">
-    <button id="searchButton" onclick="search()">Search</button>
-  </div>
+  <div id="search">
+    <h1>Search for Movies/TV Shows</h1>
+    <div class="form-group">
+      <input type="text" id="searchInput" placeholder="Search by title, actor, director...">
+      <button id="searchButton" onclick="search()">Search</button>
+    </div>
+    <!-- Filter Options -->
+    <div id="filters">
+      <h2>Advanced Filters</h2>
+      <div class="genre-group">
+        <fieldset>
+          <legend>Genre:</legend>
+          <div class="checkbox-group">
+            <div>
+              <input type="checkbox" id="genreDrama" value="Drama">
+              <label for="genreDrama">Drama</label>
+            </div>
+            <div>
+              <input type="checkbox" id="genreCrime" value="Crime">
+              <label for="genreCrime">Crime</label>
+            </div>
+            <div>
+              <input type="checkbox" id="genreComedy" value="Comedy">
+              <label for="genreComedy">Comedy</label>
+            </div>
+            <div>
+              <input type="checkbox" id="genreRomance" value="Romance">
+              <label for="genreRomance">Romance</label>
+            </div>
+            <div>
+              <input type="checkbox" id="genreFantasy" value="Fantasy">
+              <label for="genreFantasy">Fantasy</label>
+            </div>
+            <div>
+              <input type="checkbox" id="genreHorror" value="Horror">
+              <label for="genreHorror">Horror</label>
+            </div>
+            <div>
+              <input type="checkbox" id="genreAnimation" value="Animation">
+              <label for="genreAnimation">Animation</label>
+            </div>
+            <div>
+              <input type="checkbox" id="genreAdventure" value="Adventure">
+              <label for="genreAdventure">Adventure</label>
+            </div>
+            <div>
+              <input type="checkbox" id="genreSciFi" value="Sci-Fi">
+              <label for="genreSciFi">Sci-Fi</label>
+            </div>
+            <div>
+              <input type="checkbox" id="genreThriller" value="Thriller">
+              <label for="genreThriller">Thriller</label>
+            </div>
+            <div>
+              <input type="checkbox" id="genreAction" value="Action">
+              <label for="genreAction">Action</label>
+            </div>
+            <div>
+              <input type="checkbox" id="genreMystery" value="Mystery">
+              <label for="genreMystery">Mystery</label>
+            </div>
+            <div>
+              <input type="checkbox" id="genreBiography" value="Biography">
+              <label for="genreBiography">Biography</label>
+            </div>
+            <div>
+              <input type="checkbox" id="genreHistory" value="History">
+              <label for="genreHistory">History</label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="other-filters">
+        <!-- Rating filter -->
+        <fieldset>
+          <b>Rating:</b>
+          <input type="range" id="ratingFilter" min="0" max="10" step="0.5" onchange="updateRatingValue()">
+          <output for="ratingFilter" id="ratingOutput">5.0+</output>
+        </fieldset>
+
+
+        <!-- Year filter -->
+        <fieldset>
+          <b>Year:</b>
+          <input type="number" id="yearMin" placeholder="Min">
+          <input type="number" id="yearMax" placeholder="Max">
+        </fieldset>
+
+
+        <!-- Type filter -->
+        <fieldset class = "type-filter">
+          <b>Type:</b>
+          <input type="checkbox" id="typeMovie" value="Movie">
+          <label for="typeMovie">Movie</label>
+          <input type="checkbox" id="typeTVShow" value="TV Show">
+          <label for="typeTVShow">TV Show</label>
+        </fieldset>
+
+      </div>
+      <button onclick="applyFilters()">Apply Filters</button>
+      <div class="clearfix"></div>
+    </div>
     <!-- Results -->
-  <h2>Results</h2>
-  <div id="results" class="grid-container"></div>
-</div>
+    <h2>Results</h2>
+    <div id="results" class="grid-container"></div>
+  </div>
 </body>
+
 </html>

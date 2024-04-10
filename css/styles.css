@@ -126,8 +126,6 @@ footer {
   border: 1px solid #ccc;
 }
 
-/* Search Page */
-
 #search {
   text-align: center;
   margin-top: 40px; 
@@ -161,6 +159,57 @@ footer {
 
 #search button:hover {
   background-color: #006064;
+}
+
+/* Style for the filters */
+#filters {
+  margin-top: 20px;
+}
+
+.checkbox-group {
+  padding: 1%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left; 
+}
+
+.checkbox-group div {
+  display: inline-block;
+  width: 33%; 
+}
+
+/* Style for genre group */
+.genre-group {
+  margin-left: 2.5%;
+  margin-bottom: 20px;
+  float: left;
+  width: 50%;
+}
+
+/* Style for other filters */
+.other-filters {
+  float: left;
+  width: 40%;
+  margin-left: 2.5%; 
+}
+
+/* Style for individual filter fields */
+.other-filters fieldset {
+  margin-bottom: 10px;
+}
+
+.other-filters fieldset b {
+  display: block;
+
+  margin-bottom: 5px;
+}
+
+/* Clear floating elements */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
 
