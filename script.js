@@ -10,8 +10,7 @@ function login() {
     search();
 }
 
-// Search Page
-// Dummy data for movies and TV shows
+/* Dummy data for movies and TV shows */
 const mediaData = [
     {
         title: "Breaking Bad",
@@ -40,13 +39,6 @@ const mediaData = [
         genre: ["Action", "Crime", "Drama"],
         year: 2008,
         rating: 9.0
-    },
-    {
-        title: "Stranger Things",
-        type: "TV Show",
-        genre: ["Drama", "Fantasy", "Horror"],
-        year: 2016,
-        rating: 8.7
     },
     {
         title: "Pulp Fiction",
@@ -149,73 +141,139 @@ const mediaData = [
     }
 ];
 
-// Function to apply filters
-function applyFilters() {
-    const selectedGenres = Array.from(document.querySelectorAll(".checkbox-group input[type='checkbox']:checked")).map(checkbox => checkbox.value);
-    const minRating = parseFloat(document.getElementById("ratingFilter").value);
-    const minYear = parseInt(document.getElementById("yearMin").value) || 0; 
-    const maxYear = parseInt(document.getElementById("yearMax").value) || Infinity; 
-    const selectedTypes = Array.from(document.querySelectorAll(".type-filter input[type='checkbox']:checked")).map(checkbox => checkbox.value);
-
-    // Filter the media data based on the selected filters
-    const filteredMedia = mediaData.filter(media => {
-        // genre filter
-        const passGenreFilter = selectedGenres.length === 0 || selectedGenres.some(genre => media.genre.includes(genre));
-
-        // rating filter
-        const passRatingFilter = media.rating >= minRating;
-
-        // year filter
-        const passYearFilter = media.year >= minYear && media.year <= maxYear;
-
-        // type filter
-        const passTypeFilter = selectedTypes.length === 0 || selectedTypes.includes(media.type);
-
-        // Include the media item only if it passes all filters
-        return passGenreFilter && passRatingFilter && passYearFilter && passTypeFilter;
-    });
-
-    // Display filtered results
-    displaySearchResults(filteredMedia);
-}
+/* Search page */
+document.addEventListener('DOMContentLoaded', function () {
+    const resultsContainer = document.getElementById('results');
+    const searchButton = document.getElementById('searchButton');
+    const searchInput = document.getElementById('searchInput');
+    const applyFiltersButton = document.getElementById('applyFiltersButton');
 
 
-// Function to display search results
-function displaySearchResults(results) {
-    const resultsContainer = document.getElementById("results");
-    resultsContainer.innerHTML = '';
+    // Function to handle clicks for Add to List buttons
+    const addToWatchlist = function (item) {
+        let watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
+        watchlist.push(item);
+        localStorage.setItem('watchlist', JSON.stringify(watchlist));
+    };
 
-    results.forEach(media => {
+
+    // Function to check if item is already in watchlist
+    function isInWatchlist(item) {
+        let watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
+        return watchlist.some(watchlistItem => watchlistItem.title === item.title);
+    }
+
+    // Function to create element for each search result item
+    const createResultItem = function (item) {
         const resultItem = document.createElement('div');
         resultItem.classList.add('result-item');
-        resultItem.innerHTML = `
-            <h3>${media.title}</h3>
-            <p>Type: ${media.type}</p>
-            <p>Genre: ${media.genre.join(', ')}</p>
-            <p>Year: ${media.year}</p>
-            <p>Rating: ${media.rating}</p>
+
+        let alreadyInWatchlist = isInWatchlist(item);
+
+        if (alreadyInWatchlist) {
+            resultItem.innerHTML = `
+            <h3>${item.title}</h3>
+            <p>Type: ${item.type}</p>
+            <p>Genre: ${item.genre.join(', ')}</p>
+            <p>Year: ${item.year}</p>
+            <p>Rating: ${item.rating}</p>
+            <p><br><b>Added to Watchlist<b></p>
         `;
-        resultsContainer.appendChild(resultItem);
+        } else {
+            resultItem.innerHTML = `
+            <h3>${item.title}</h3>
+            <p>Type: ${item.type}</p>
+            <p>Genre: ${item.genre.join(', ')}</p>
+            <p>Year: ${item.year}</p>
+            <p>Rating: ${item.rating}</p>
+            <button class="add-to-watchlist-btn">Add to List</button>
+        `;
+        }
+        // Add event listener to the result item
+        resultItem.addEventListener('click', function () {
+            if (!alreadyInWatchlist) {
+                addToWatchlist(item);
+                alreadyInWatchlist = true; 
+                resultItem.innerHTML = `
+                <h3>${item.title}</h3>
+                <p>Type: ${item.type}</p>
+                <p>Genre: ${item.genre.join(', ')}</p>
+                <p>Year: ${item.year}</p>
+                <p>Rating: ${item.rating}</p>
+                <p><br><b>Added to Watchlist<b></p>
+            `;
+            }
+        });
+        return resultItem;
+    };
+
+
+    // Function to display search results
+    const displaySearchResults = function (results) {
+        resultsContainer.innerHTML = '';
+        results.forEach(function (item) {
+            const resultItem = createResultItem(item);
+            resultsContainer.appendChild(resultItem);
+        });
+    };
+
+    // Function to perform the search
+    const search = function () {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredMedia = mediaData.filter(function (media) {
+            return media.title.toLowerCase().includes(searchTerm) || searchTerm === '';
+        });
+
+        displaySearchResults(filteredMedia);
+    };
+
+
+    // Function to apply filters
+    function applyFilters() {
+        const selectedGenres = Array.from(document.querySelectorAll(".checkbox-group input[type='checkbox']:checked")).map(checkbox => checkbox.value);
+        const minRating = parseFloat(document.getElementById("ratingFilter").value);
+        const minYear = parseInt(document.getElementById("yearMin").value) || 0;
+        const maxYear = parseInt(document.getElementById("yearMax").value) || Infinity;
+        const selectedTypes = Array.from(document.querySelectorAll(".type-filter input[type='checkbox']:checked")).map(checkbox => checkbox.value);
+
+        // Filter the media data based on the selected filters
+        const filteredMedia = mediaData.filter(media => {
+            // genre filter
+            const passGenreFilter = selectedGenres.length === 0 || selectedGenres.some(genre => media.genre.includes(genre));
+
+            // rating filter
+            const passRatingFilter = media.rating >= minRating;
+
+            // year filter
+            const passYearFilter = media.year >= minYear && media.year <= maxYear;
+
+            // type filter
+            const passTypeFilter = selectedTypes.length === 0 || selectedTypes.includes(media.type);
+
+            // Include the media item only if it passes all filters
+            return passGenreFilter && passRatingFilter && passYearFilter && passTypeFilter;
+        });
+
+        // Display filtered results
+        displaySearchResults(filteredMedia);
+    }
+
+    // Event listener for apply filters button click
+    applyFiltersButton.addEventListener('click', applyFilters);
+
+    // Event listener for search button click
+    searchButton.addEventListener('click', search);
+
+    // Event listener for pressing Enter in the search input
+    searchInput.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            search();
+        }
     });
-}
 
-// Function to display search results
-function search() {
-    const searchTerm = document.getElementById("searchInput").value.toLowerCase();
-    const filteredMedia = mediaData.filter(media => media.title.toLowerCase().includes(searchTerm) || searchTerm === '');
-
-    // Apply filters if any
-    applyFilters();
-
-    // Display search results
-    displaySearchResults(filteredMedia);
-}
-
-
-// Display all results initially
-window.onload = function () {
+    // Display all results initially
     search();
-}
+});
 
 // Function to update rating value displayed
 function updateRatingValue() {
@@ -225,44 +283,39 @@ function updateRatingValue() {
 }
 
 
-// Watchlist
-
-// Dummy data for watchlist items
-const watchlistData = [
-    {
-        title: "Breaking Bad",
-        type: "TV Show",
-        genre: ["Drama", "Crime"],
-        year: 2008,
-        rating: 9.5
-    },
-    {
-        title: "Game of Thrones",
-        type: "TV Show",
-        genre: ["Fantasy", "Drama"],
-        year: 2011,
-        rating: 9.3
-    },
-
-];
+/* Watchlist */
 
 // Function to display watchlist items
 function displayWatchlist() {
     const watchlistContainer = document.getElementById("watchlist");
     watchlistContainer.innerHTML = '';
 
-    watchlistData.forEach(item => {
+    let watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
+
+    watchlist.forEach(item => {
         const watchlistItem = document.createElement('div');
         watchlistItem.classList.add('watchlist-item');
         watchlistItem.innerHTML = `
-        <h3>${item.title}</h3>
-        <p>Type: ${item.type}</p>
-        <p>Genre: ${item.genre.join(', ')}</p>
-        <p>Year: ${item.year}</p>
-        <p>Rating: ${item.rating}</p>
-      `;
+            <h3>${item.title}</h3>
+            <p>Type: ${item.type}</p>
+            <p>Genre: ${item.genre.join(', ')}</p>
+            <p>Year: ${item.year}</p>
+            <p>Rating: ${item.rating}</p>
+            <button class="remove-from-watchlist-btn">Remove from List</button>
+        `;
+        watchlistItem.querySelector('.remove-from-watchlist-btn').addEventListener('click', function () {
+            removeFromWatchlist(item);
+            displayWatchlist();
+        });
         watchlistContainer.appendChild(watchlistItem);
     });
+}
+
+// Function to remove item from watchlist
+function removeFromWatchlist(itemToRemove) {
+    let watchlist = JSON.parse(localStorage.getItem('watchlist')) || [];
+    watchlist = watchlist.filter(item => item.title !== itemToRemove.title);
+    localStorage.setItem('watchlist', JSON.stringify(watchlist));
 }
 
 // Display watchlist items when page loads
@@ -270,14 +323,9 @@ window.onload = function () {
     displayWatchlist();
 }
 
-
 // Future functionality
 
 // Firebase initialization and configuration 
 // Function to handle user sign up
 // Function to handle user login
 // Function to handle forgot password
-// Function to handle search
-// Function to update search results
-// Function to add item to watchlist
-// Function to remove item from watchlist
