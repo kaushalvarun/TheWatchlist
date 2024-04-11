@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Search and Results Page</title>
   <link rel="stylesheet" href="css/styles.css">
-  <script src="script.js"></script>
+  <script src="scripts/script.js"></script>
 </head>
 
 <body>
@@ -20,6 +20,7 @@
   </nav>
   <!-- Search bar -->
   <div id="search">
+    <h3 id="userEmail"></h2>
     <h1>Search for Movies/TV Shows</h1>
     <div class="form-group">
       <input type="text" id="searchInput" placeholder="Search by title, actor, director...">
@@ -110,7 +111,7 @@
 
 
         <!-- Type filter -->
-        <fieldset class = "type-filter">
+        <fieldset class="type-filter">
           <b>Type:</b>
           <input type="checkbox" id="typeMovie" value="Movie">
           <label for="typeMovie">Movie</label>
@@ -128,5 +129,4 @@
     <div id="results" class="grid-container"></div>
   </div>
 </body>
-
 </html>
