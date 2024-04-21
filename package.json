@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://kaushalvarun.github.io",
+  "homepage": "https://kaushalvarun.github.io/TheWatchlist",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
