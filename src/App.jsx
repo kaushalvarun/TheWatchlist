@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     path: '/profile',
     element: <ProfilePage/>,
   },
-]);
+],{ basename: import.meta.env.DEV ? '/' : '/TheWatchlist/' });
 
 
 function App() {
@@ -32,4 +32,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
