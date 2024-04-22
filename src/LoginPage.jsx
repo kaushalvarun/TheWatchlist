@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
-
 function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -58,19 +57,12 @@ function LoginPage() {
     };
 
     if (loggedIn) {
-        return <Navigate to="/search-and-results" state = {user}/>;
+        return <Navigate to="/search-and-results" state={user} />;
     }
 
     return (
         <>
-            <nav>
-                <ul>
-                    <li>&nbsp;</li>
-                </ul>
-                <ul>
-                    <li>&nbsp;</li>
-                </ul>
-            </nav>
+            <div className="background-image"></div> 
             <div className="container">
                 <header>
                     <h1>TheWatchlist</h1>
@@ -89,10 +81,10 @@ function LoginPage() {
                         <button type="submit">Login</button>
                     </div>
                 </form>
+            </div>
                 <footer>
                     <p>TheWatchList &copy;{new Date().getFullYear()}</p>
                 </footer>
-            </div>
         </>
     );
 }

@@ -1,0 +1,108 @@
+/* home.css */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+.Home {
+  font-family: 'Raleway', sans-serif; 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-image: url('src/assets/shutterstock_750823333.webp'); 
+  background-size: cover;
+  background-position: center;
+  color: #ffffff; 
+  text-align: center;
+  padding: 20px;
+  width: 100%; 
+  height: 100vh; 
+  position: relative;
+}
+
+.Home .App-header {
+  padding: 100px 0; 
+  animation: fadeInDown 1s ease; 
+}
+
+.Home h1 {
+  color: #3db493;
+  font-size: 5rem; 
+}
+
+.Home .subtitle {
+  font-size: 1.2rem;
+}
+
+.Home .cta {
+  margin-top: 60px;
+}
+
+.Home .login-section {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.Home .login-button {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  width: 30%; 
+  background-color: #288269;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; 
+}
+
+.Home .login-button:hover {
+  background-color: #185342;
+  transform: scale(1.1); 
+  box-shadow: 0px 0px 10px #ffffff;
+}
+
+.Home .features ul {
+  font-size: 1.4rem; 
+  color: #dcdcdc; 
+}
+
+.Home footer {
+  position: absolute; 
+  bottom: 0; 
+  left: 0; 
+  width: 100%; 
+  padding: 20px 0;
+  background-color: rgba(0, 0, 0, 0.5); 
+  color: #fff;
+  animation: fadeInUp 1s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .Home h1 {
+    font-size: 3rem;
+  }
+
+  .Home .login-button {
+    width: 60%;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

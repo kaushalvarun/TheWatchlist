@@ -4,12 +4,17 @@ import SearchPage from './SearchPage.jsx';
 import WatchlistPage from './WatchListPage.jsx';
 import NotFoundPage from './NotFoundPage.jsx';
 import ProfilePage from "./ProfilePage.jsx";
+import Home from "./Home.jsx";
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <LoginPage/>,
+    element: <Home/>,
     errorElement: <NotFoundPage/>
+  },
+  {
+    path: '/auth',
+    element: <LoginPage/>,
   },
   {
     path: '/search-and-results',

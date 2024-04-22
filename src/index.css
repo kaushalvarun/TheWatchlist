@@ -1,3 +1,5 @@
+/* General styles */
+
 * {
   margin: 0;
   padding: 0;
@@ -5,10 +7,11 @@
 }
 
 /* Navigation Bar Styles */
+
 nav {
   text-align: center;
   background-color: #004953;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 nav ul {
@@ -29,18 +32,18 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  background-color: #006064; 
+  background-color: #006064;
 }
 
 .navbar-btn {
   font-size: medium;
-  background-color: #004953; 
-  color: #fff; 
-  cursor: pointer; 
-  font-family: Arial, sans-serif; 
+  background-color: #004953;
+  color: #fff;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
   border: none;
-  border-radius: 5px; 
-  padding: 10px; 
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .drop-btn {
@@ -48,16 +51,17 @@ nav ul li a:hover {
   font-size: medium;
   width: 100%;
   margin: auto;
-  background-color: inherit; 
+  background-color: inherit;
   border: none;
-  border-radius: 5px; 
-  margin-top: 5px; 
+  border-radius: 5px;
+  margin-top: 5px;
   color: black;
   padding: 12px 16px;
   text-decoration: none;
 }
 
-.dropdown-content a:hover, .dropdown-content button:hover {
+.dropdown-content a:hover,
+.dropdown-content button:hover {
   background-color: #f1f1f1;
 }
 
@@ -65,7 +69,7 @@ nav ul li a:hover {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -78,48 +82,52 @@ nav ul li a:hover {
 }
 
 /* Body Styles */
+
 body {
-  background-color: #f5f5f5; 
+  background-color: #f5f5f5;
   color: #333;
-  font-family: Arial, sans-serif; 
+  font-family: Arial, sans-serif;
 }
 
 /* Container Styles */
+
 .container {
-  max-width: 800px; 
-  margin: 50px auto; 
-  padding: 20px; 
-  background-color: #fff; 
-  border-radius: 5px; 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Header Styles */
+
 header {
-  text-align: center; 
-  margin-bottom: 20px; 
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 header h1 {
-  font-size: 36px; 
-  color: #004953; 
-  margin-bottom: 10px; 
+  font-size: 36px;
+  color: #004953;
+  margin-bottom: 10px;
 }
 
 header h3 {
-  font-size: 18px; 
-  font-weight: normal; 
-  color: #666; 
+  font-size: 18px;
+  font-weight: normal;
+  color: #666;
 }
 
 /* Form Styles */
+
 form {
-  display: flex; 
+  display: flex;
   flex-direction: column;
 }
 
 .form-group {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 label {
@@ -130,18 +138,19 @@ input[type="email"],
 input[type="password"],
 input[type="text"],
 button {
-  width: 100%; 
+  width: 100%;
   padding: 10px;
-  margin-top: 5px; 
-  border-radius: 5px; 
+  margin-top: 5px;
+  border-radius: 5px;
   border: 1px solid #ccc;
 }
 
 /* Button Styles */
+
 button {
-  background-color: #004953; 
-  color: #fff; 
-  cursor: pointer; 
+  background-color: #004953;
+  color: #fff;
+  cursor: pointer;
   font-family: Arial, sans-serif;
 }
 
@@ -150,13 +159,15 @@ button:hover {
 }
 
 /* Footer Styles */
+
 footer {
-  margin-top: 20px; 
-  text-align: center; 
-  color: #666; 
+  margin-top: 20px;
+  text-align: center;
+  color: #666;
 }
 
 /* Search Page */
+
 .grid-container {
   margin: 2.5%;
   display: grid;
@@ -179,13 +190,13 @@ footer {
 
 #watchlist .remove-from-watchlist-btn:hover,
 #results .add-to-watchlist-btn:hover {
-  background-color:#7d70da;
+  background-color: #7d70da;
 }
 
 
 #search {
   text-align: center;
-  margin-top: 40px; 
+  margin-top: 40px;
 }
 
 #search h1 {
@@ -194,19 +205,19 @@ footer {
 
 #search .form-group {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   margin-bottom: 20px;
 }
 
 #search input[type="text"] {
-  width: 30%; 
-  padding: 8px; 
+  width: 30%;
+  padding: 8px;
   margin-right: 10px;
 }
 
 #search button {
   width: 10%;
-  padding: 8px 20px; 
+  padding: 8px 20px;
   background-color: #004953;
   color: #fff;
   border: none;
@@ -219,6 +230,7 @@ footer {
 }
 
 /* Style for the filters */
+
 #filters {
   margin-top: 20px;
 }
@@ -228,15 +240,16 @@ footer {
   margin-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
-  text-align: left; 
+  text-align: left;
 }
 
 .checkbox-group div {
   display: inline-block;
-  width: 33%; 
+  width: 33%;
 }
 
 /* Style for genre group */
+
 .genre-group {
   margin-left: 2.5%;
   margin-bottom: 20px;
@@ -245,10 +258,11 @@ footer {
 }
 
 /* Style for other filters */
+
 .other-filters {
   float: left;
   width: 40%;
-  margin-left: 2.5%; 
+  margin-left: 2.5%;
 }
 
 .other-filters fieldset {
@@ -262,6 +276,7 @@ footer {
 }
 
 /* Clear floating elements */
+
 .clearfix::after {
   content: "";
   clear: both;
@@ -270,6 +285,7 @@ footer {
 
 
 /* Watchlist Page */
+
 #watchlist {
   margin-top: 20px;
 }
@@ -285,4 +301,265 @@ footer {
   background-color: #f5f5f5;
   border-radius: 5px;
   border: 1px solid #ccc;
+}
+
+this is good but you removed my css styles for my other pages bring them back
+/* index.css */
+
+/* General styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navigation Bar Styles */
+
+nav {
+  text-align: center;
+  background-color: #004953;
+  overflow: hidden;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li a {
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  background-color: #006064;
+}
+
+.navbar-btn {
+  font-size: medium;
+  background-color: #004953;
+  color: #fff;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.drop-btn {
+  display: flex;
+  font-size: medium;
+  width: 100%;
+  margin: auto;
+  background-color: inherit;
+  border: none;
+  border-radius: 5px;
+  margin-top: 5px;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover,
+.dropdown-content button:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+#settings {
+  display: inline-block;
+}
+
+/* Body Styles */
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+/* Container Styles */
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f0f0f0; /* Darker shade of white */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 36px;
+  color: #004953;
+  margin-bottom: 10px;
+}
+
+header h3 {
+  font-size: 18px;
+  font-weight: normal;
+  color: #666;
+}
+
+/* Form Styles */
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Button Styles */
+
+button {
+  background-color: #004953;
+  color: #fff;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+}
+
+button:hover {
+  background-color: #006064;
+}
+
+/* Footer Styles */
+
+footer {
+  position: fixed; /* Page footer */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+/* Login Page Styles */
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('src/assets/shutterstock_750823333.webp');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+/* Login page */
+
+.container-login {
+  position: relative;
+  z-index: 1;
+}
+
+.container-login header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container-login header h1 {
+  font-size: 36px;
+  color: #004953;
+  margin-bottom: 10px;
+}
+
+.container-login header h3 {
+  font-size: 18px;
+  font-weight: normal;
+  color: #666;
+}
+
+.container-login form {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-login .form-group {
+  margin-bottom: 20px;
+}
+
+.container-login label {
+  font-weight: bold;
+}
+
+.container-login input[type="email"],
+.container-login input[type="password"],
+.container-login input[type="text"],
+.container-login button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.container-login button {
+  background-color: #004953;
+  color: #fff;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+}
+
+.container-login button:hover {
+  background-color: #006064;
+}
+
+.container-login footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
 }
